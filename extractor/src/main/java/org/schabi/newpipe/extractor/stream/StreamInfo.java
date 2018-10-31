@@ -42,8 +42,8 @@ public class StreamInfo extends Info {
         }
     }
 
-    public StreamInfo(int serviceId, String url, String originalUrl, StreamType streamType, String id, String name, int ageLimit) {
-        super(serviceId, id, url, originalUrl, name);
+    public StreamInfo(int serviceId, String url, String shortUrl, String originalUrl, StreamType streamType, String id, String name, int ageLimit) {
+        super(serviceId, id, url, shortUrl, originalUrl, name);
         this.streamType = streamType;
         this.ageLimit = ageLimit;
     }
@@ -87,6 +87,7 @@ public class StreamInfo extends Info {
 
         int serviceId = extractor.getServiceId();
         String url = extractor.getUrl();
+        final String shortUrl = extractor.getShortUrl();
         String originalUrl = extractor.getOriginalUrl();
         StreamType streamType = extractor.getStreamType();
         String id = extractor.getId();
@@ -101,7 +102,7 @@ public class StreamInfo extends Info {
             throw new ExtractionException("Some important stream information was not given.");
         }
 
-        return new StreamInfo(serviceId, url, originalUrl, streamType, id, name, ageLimit);
+        return new StreamInfo(serviceId, url, shortUrl, originalUrl, streamType, id, name, ageLimit);
     }
 
     private static StreamInfo extractStreams(StreamInfo streamInfo, StreamExtractor extractor) throws ExtractionException {

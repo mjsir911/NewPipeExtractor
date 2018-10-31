@@ -14,10 +14,11 @@ public abstract class ListInfo<T extends InfoItem> extends Info {
                     String id,
                     String url,
                     String originalUrl,
+                    String shortUrl,
                     String name,
                     List<String> contentFilter,
                     String sortFilter) {
-        super(serviceId, id, url, originalUrl, name);
+        super(serviceId, id, url, shortUrl, originalUrl, name);
         this.contentFilters = contentFilter;
         this.sortFilter = sortFilter;
     }

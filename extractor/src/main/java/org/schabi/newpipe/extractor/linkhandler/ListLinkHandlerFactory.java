@@ -14,6 +14,7 @@ public abstract class ListLinkHandlerFactory extends LinkHandlerFactory {
     public List<String> getContentFilter(String url) throws ParsingException { return new ArrayList<>(0);}
     public String getSortFilter(String url) throws ParsingException {return ""; }
     public abstract String getUrl(String id, List<String> contentFilter, String sortFilter) throws ParsingException;
+    public String getShortUrl(String id, List<String> contentFilter, String sortFilter) throws ParsingException {return getUrl(id, contentFilter, sortFilter);}
 
     ///////////////////////////////////
     // Logic
@@ -36,7 +37,8 @@ public abstract class ListLinkHandlerFactory extends LinkHandlerFactory {
                                      List<String> contentFilters,
                                      String sortFilter) throws ParsingException {
         final String url = getUrl(id, contentFilters, sortFilter);
-        return new ListLinkHandler(url, url, id, contentFilters, sortFilter);
+        final String shortUrl = getShortUrl(id, contentFilters, sortFilter);
+        return new ListLinkHandler(url, url, shortUrl, id, contentFilters, sortFilter);
     }
 
 

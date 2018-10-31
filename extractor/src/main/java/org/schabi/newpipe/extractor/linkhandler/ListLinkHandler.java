@@ -9,10 +9,11 @@ public class ListLinkHandler extends LinkHandler {
 
     public ListLinkHandler(String originalUrl,
                            String url,
+                           String shortUrl,
                            String id,
                            List<String> contentFilters,
                            String sortFilter) {
-        super(originalUrl, url, id);
+        super(originalUrl, url, shortUrl, id);
         this.contentFilters = Collections.unmodifiableList(contentFilters);
         this.sortFilter = sortFilter;
     }
@@ -20,6 +21,7 @@ public class ListLinkHandler extends LinkHandler {
     public ListLinkHandler(ListLinkHandler handler) {
         this(handler.originalUrl,
                 handler.url,
+                handler.shortUrl,
                 handler.id,
                 handler.contentFilters,
                 handler.sortFilter);
@@ -30,6 +32,7 @@ public class ListLinkHandler extends LinkHandler {
                            String sortFilter) {
         this(handler.originalUrl,
                 handler.url,
+                handler.shortUrl,
                 handler.id,
                 contentFilters,
                 sortFilter);

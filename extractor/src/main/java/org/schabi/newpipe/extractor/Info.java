@@ -27,6 +27,7 @@ public abstract class Info implements Serializable {
      *
      * @see Extractor#getOriginalUrl()
      */
+    private final String shortUrl;
     private final String originalUrl;
     private final String name;
 
@@ -40,10 +41,11 @@ public abstract class Info implements Serializable {
         this.errors.addAll(errors);
     }
 
-    public Info(int serviceId, String id, String url, String originalUrl, String name) {
+    public Info(int serviceId, String id, String url, String shortUrl, String originalUrl, String name) {
         this.serviceId = serviceId;
         this.id = id;
         this.url = url;
+        this.shortUrl = shortUrl;
         this.originalUrl = originalUrl;
         this.name = name;
     }
@@ -52,6 +54,7 @@ public abstract class Info implements Serializable {
         this(serviceId,
                 linkHandler.getId(),
                 linkHandler.getUrl(),
+                linkHandler.getShortUrl(),
                 linkHandler.getOriginalUrl(),
                 name);
     }
@@ -72,6 +75,10 @@ public abstract class Info implements Serializable {
 
     public String getUrl() {
         return url;
+    }
+
+    public String getShortUrl() {
+        return shortUrl;
     }
 
     public String getOriginalUrl() {

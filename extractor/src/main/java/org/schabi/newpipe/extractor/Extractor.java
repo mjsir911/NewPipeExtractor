@@ -92,6 +92,11 @@ public abstract class Extractor {
     }
 
     @Nonnull
+    public String getShortUrl() throws ParsingException {
+        return linkHandler.getShortUrl();
+    }
+
+    @Nonnull
     public StreamingService getService() {
         return service;
     }

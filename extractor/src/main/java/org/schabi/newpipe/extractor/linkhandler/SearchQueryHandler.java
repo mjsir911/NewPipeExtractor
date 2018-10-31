@@ -6,15 +6,17 @@ public class SearchQueryHandler extends ListLinkHandler {
 
     public SearchQueryHandler(String originalUrl,
                               String url,
+                              String shortUrl,
                               String searchString,
                               List<String> contentFilters,
                               String sortFilter) {
-        super(originalUrl, url, searchString, contentFilters, sortFilter);
+        super(originalUrl, url, shortUrl, searchString, contentFilters, sortFilter);
     }
 
     public SearchQueryHandler(ListLinkHandler handler) {
         this(handler.originalUrl,
                 handler.url,
+                handler.shortUrl,
                 handler.id,
                 handler.contentFilters,
                 handler.sortFilter);

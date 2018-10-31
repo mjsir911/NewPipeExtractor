@@ -31,6 +31,7 @@ public abstract class LinkHandlerFactory {
 
     public abstract String getId(String url) throws ParsingException;
     public abstract String getUrl(String id) throws ParsingException;
+    public String getShortUrl(String id) throws ParsingException {return getUrl(id);}
     public abstract boolean onAcceptUrl(final String url) throws ParsingException;
 
     ///////////////////////////////////
@@ -44,13 +45,14 @@ public abstract class LinkHandlerFactory {
         }
 
         final String id = getId(url);
-        return new LinkHandler(url, getUrl(id), id);
+        return new LinkHandler(url, getUrl(id), getShortUrl(id), id);
     }
 
     public LinkHandler fromId(String id) throws ParsingException {
         if(id == null) throw new IllegalArgumentException("id can not be null");
         final String url = getUrl(id);
-        return new LinkHandler(url, url, id);
+        final String shortUrl = getShortUrl(id);
+        return new LinkHandler(url, url, shortUrl, id);
     }
 
     /**

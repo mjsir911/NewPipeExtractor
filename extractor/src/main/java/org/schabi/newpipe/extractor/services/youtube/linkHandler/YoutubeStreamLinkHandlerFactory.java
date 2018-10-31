@@ -55,6 +55,11 @@ public class YoutubeStreamLinkHandlerFactory extends LinkHandlerFactory {
     }
 
     @Override
+    public String getShortUrl(String id) {
+        return "https://youtu.be/" + id;
+    }
+
+    @Override
     public String getId(String url) throws ParsingException, IllegalArgumentException {
         if (url.isEmpty()) {
             throw new IllegalArgumentException("The url parameter should not be empty");
